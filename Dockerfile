@@ -13,5 +13,3 @@ RUN apk add -U --virtual deps curl \
 	make install && \
 	apk del --purge deps && \
 	rm -rf ~/*
-
-CMD /opt/dovecot/sbin/dovecot -F

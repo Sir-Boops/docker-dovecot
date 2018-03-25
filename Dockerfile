@@ -2,6 +2,8 @@ FROM alpine:3.7
 
 ENV DOVE_VER="2.3.0.1"
 
+RUN adduser -S dovenull
+
 RUN apk add -U --virtual deps curl \
 		gcc g++ openssl-dev make && \
 	cd ~ && \

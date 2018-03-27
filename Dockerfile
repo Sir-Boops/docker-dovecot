@@ -2,7 +2,12 @@ FROM alpine:3.7
 
 ENV DOVE_VER="2.3.0.1"
 
-RUN adduser -S dovenull
+RUN addgroup -S dovenull && \
+	adduser -S -G dovenull dovenull && \
+	addgroup vmail && \
+	adduser -D -G vmail vmail && \
+	addgroup -S dovecot && \
+	adduser -S -G dovecot dovecot
 
 RUN apk add -U --virtual deps curl \
 		gcc g++ openssl-dev make && \
@@ -14,4 +19,5 @@ RUN apk add -U --virtual deps curl \
 	make -j$(nproc) && \
 	make install && \
 	apk del --purge deps && \
+	apk add libssl1.0 && \
 	rm -rf ~/*

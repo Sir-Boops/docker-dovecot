@@ -18,7 +18,7 @@ RUN apk add -U --virtual deps curl \
     cd ~/dovecot-$DOVE_VER && \
     ./configure --bindir=/opt/dovecot/bin \
         --sbindir=/opt/dovecot/sbin --sysconfdir=/opt/dovecot/etc && \
-    make -j$(nproc) && \
+    make -j$(nproc) > /dev/null && \
     make install && \
     apk del --purge deps && \
     rm -rf ~/*

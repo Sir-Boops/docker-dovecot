@@ -1,7 +1,6 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
-ENV DOVE_VER="2.3.1"
-ENV SIEVE_VER="0.5.1"
+ENV DOVE_VER="2.3.4"
 
 RUN addgroup -S dovenull && \
     adduser -S -G dovenull dovenull && \
@@ -15,17 +14,13 @@ RUN apk add -U --virtual deps curl \
     apk add libssl1.0 && \
     cd ~ && \
     curl --remote-name https://www.dovecot.org/releases/${DOVE_VER%.*}/dovecot-$DOVE_VER.tar.gz && \
-    curl --remote-name https://pigeonhole.dovecot.org/releases/${DOVE_VER%.*}/dovecot-${DOVE_VER%.*}-pigeonhole-$SIEVE_VER.tar.gz && \
     tar xf dovecot-$DOVE_VER.tar.gz && \
-    tar xf dovecot-${DOVE_VER%.*}-pigeonhole-$SIEVE_VER.tar.gz && \
     cd ~/dovecot-$DOVE_VER && \
     ./configure --bindir=/opt/dovecot/bin \
         --sbindir=/opt/dovecot/sbin --sysconfdir=/opt/dovecot/etc && \
     make -j$(nproc) && \
     make install && \
-    cd ~/dovecot-${DOVE_VER%.*}-pigeonhole-$SIEVE_VER && \
-    ./configure --with-dovecot=../dovecot-$DOVE_VER --prefix=/opt/sieve && \
-    make -j$(nproc) && \
-    make install && \
     apk del --purge deps && \
     rm -rf ~/*
+
+CMD /opt/dovecot/sbin/dovecot -F

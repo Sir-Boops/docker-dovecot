@@ -3,11 +3,11 @@ FROM alpine:3.8
 ENV DOVE_VER="2.3.4"
 
 RUN addgroup -S dovenull && \
-    adduser -S -G dovenull dovenull && \
-    addgroup vmail && \
-    adduser -D -G vmail vmail && \
+    adduser -S -u 991 -G dovenull dovenull && \
     addgroup -S dovecot && \
-    adduser -S -G dovecot dovecot
+    adduser -S -u 992 -G dovecot dovecot && \
+    addgroup vmail && \
+    adduser -S -u 993 -G vmail vmail
 
 RUN apk add -U --virtual deps curl \
         gcc g++ openssl-dev make && \

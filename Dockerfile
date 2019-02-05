@@ -1,6 +1,6 @@
 FROM alpine:3.8
 
-ENV DOVE_VER="2.3.4"
+ENV DOVE_VER="2.3.4.1"
 
 RUN addgroup -S dovenull && \
     adduser -S -u 991 -G dovenull dovenull && \

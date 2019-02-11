@@ -22,7 +22,9 @@ RUN apk add -U --virtual deps curl \
     ./configure --bindir=/opt/dovecot/bin \
         --sbindir=/opt/dovecot/sbin --sysconfdir=/opt/dovecot/etc && \
     make -j$(nproc) > /dev/null && \
-    make install
+    make install && \
+	rm -rf ~/* && \
+	apk del --purge deps
 
 # Add dovecot to system path
 ENV PATH=${PATH}:/opt/dovecot/sbin:/opt/dovecot/bin

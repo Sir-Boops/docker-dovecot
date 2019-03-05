@@ -14,7 +14,7 @@ RUN addgroup -S dovenull && \
 # Build and install dovecot
 RUN apk add -U --virtual deps curl \
         gcc g++ openssl-dev make && \
-    apk add libssl1.0 && \
+    apk add libssl1.1 && \
     cd ~ && \
     curl --remote-name https://www.dovecot.org/releases/$(echo $DOVE_VER | cut -c1-3)/dovecot-$DOVE_VER.tar.gz && \
     tar xf dovecot-$DOVE_VER.tar.gz && \

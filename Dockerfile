@@ -1,7 +1,7 @@
 FROM alpine:3.9
 
 # Set versions
-ENV DOVE_VER="2.3.5"
+ENV DOVE_VER="2.3.5.1"
 
 # Create Groups
 RUN addgroup -S dovenull && \

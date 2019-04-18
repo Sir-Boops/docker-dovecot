@@ -12,11 +12,11 @@ RUN addgroup -S dovenull && \
     adduser -S -u 993 -G vmail vmail
 
 # Build and install dovecot
-RUN apk add -U --virtual deps curl \
-        gcc g++ openssl-dev make && \
-    apk add libssl1.1 && \
+RUN apk add -U --virtual deps build-base \
+		openssl-dev && \
+    apk add openssl && \
     cd ~ && \
-    curl --remote-name https://www.dovecot.org/releases/$(echo $DOVE_VER | cut -c1-3)/dovecot-$DOVE_VER.tar.gz && \
+    wget https://www.dovecot.org/releases/$(echo $DOVE_VER | cut -c1-3)/dovecot-$DOVE_VER.tar.gz && \
     tar xf dovecot-$DOVE_VER.tar.gz && \
     cd ~/dovecot-$DOVE_VER && \
     ./configure --bindir=/opt/dovecot/bin \

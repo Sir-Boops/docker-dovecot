@@ -17,7 +17,7 @@ RUN apk add -U --virtual deps build-base \
 		openssl-dev && \
 	apk add openssl && \
 	cd ~ && \
-	wget https://www.dovecot.org/releases/$(echo $DOVE_VER | cut -c1-3)/dovecot-$DOVE_VER.tar.gz && \
+	wget https://dovecot.org/releases/$(echo $DOVE_VER | cut -c1-3)/dovecot-$DOVE_VER.tar.gz && \
 	wget https://pigeonhole.dovecot.org/releases/$(echo $DOVE_VER | cut -c1-3)/dovecot-$(echo $DOVE_VER | cut -c1-3)-pigeonhole-${SEIVE_VER}.tar.gz && \
 	tar xf dovecot-$DOVE_VER.tar.gz && \
 	tar xf dovecot-$(echo $DOVE_VER | cut -c1-3)-pigeonhole-${SEIVE_VER}.tar.gz && \

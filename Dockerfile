@@ -1,8 +1,8 @@
-FROM alpine:3.10
+FROM alpine:3.10.2
 
 # Set versions
-ENV DOVE_VER="2.3.7.2"
-ENV SEIVE_VER="0.5.7.2"
+ENV DOVE_VER="2.3.8"
+ENV SEIVE_VER="0.5.8"
 
 # Create Groups
 RUN addgroup -S dovenull && \

@@ -1,7 +1,7 @@
 FROM alpine:3.11
 
 # Set versions
-ENV DOVE_VER="2.3.10"
+ENV DOVE_VER="2.3.10.1"
 ENV SEIVE_VER="0.5.10"
 
 # Create Groups

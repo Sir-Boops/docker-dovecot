@@ -26,7 +26,7 @@ RUN apk add -U --virtual deps build-base \
 		--sbindir=/opt/dovecot/sbin --sysconfdir=/opt/dovecot/etc && \
 	make -j$(nproc) && \
 	make install && \
-	cd ~/dovecot-$(echo $DOVE_VER | cut -c1-3)-pigeonhole-${SEIVE_VER} && \
+	cd ~/dovecot-$(echo $DOVE_VER | cut -c1-6)-pigeonhole-${SEIVE_VER} && \
 	./configure --with-dovecot=/usr/local/lib/dovecot && \
 	make -j$(nproc) && \
 	make install && \
